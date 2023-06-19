@@ -7,24 +7,6 @@
     margin:1em;
     display:flex;
 }
-.tabs{
-    border:solid black;
-    border-radius:22px;
-    border-width:.2px;
-    text-align:center;
-    padding-top:7px;
-    width:120px;
-}
-.tabs:hover{
-    border:solid black;
-    border-radius:22px;
-    border-width:.2px;
-    text-align:center;
-    background-color:green;
-    color:white;
-    padding-top:7px;
-    width:120px;
-}
 .options{
     border:solid green;
     border-width:.2px;

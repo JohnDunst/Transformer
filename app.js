@@ -1,4 +1,3 @@
-
 // DOM MANIPULATION
 
 // Goal: Retail Site 
@@ -36,7 +35,7 @@
                     pic: "https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=723&q=80"
                 },
             ],
-            textDescription: 'Update your everyday wardrobe with our collection of mens pants. Discover tailored suit pants for work or special occasions, as well as comfier sweatpants and joggers for downtime. Mix up your weekend look and swap the jeans for a pair of cargo pants or chinos. Browse a range of colors, from neutral blacks and grays to brighter shades and prints. Find everything from soft breathable cotton to functional track pants and luxe velvet dress pants.',
+            textDescription: 'Update your everyday wardrobe with our collection of men’s pants. Discover tailored suit pants for work or special occasions, as well as comfier sweatpants and joggers for downtime. Mix up your weekend look and swap the jeans for a pair of cargo pants or chinos. Browse a range of colors, from neutral blacks and grays to brighter shades and prints. Find everything from soft breathable cotton to functional track pants and luxe velvet dress pants.',
             lowImage: 'https://images.unsplash.com/photo-1516826957135-700dedea698c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         },
         womens: 
@@ -103,6 +102,8 @@
                 textDescription: 'Endlessly comfortable and stylish, our girls clothes range is your one-stop shop for everything she needs in her closet. Whether youre looking for snuggly sweaters and cardigans, want to refresh on everyday T-shirts and leggings, or youre searching for cool dresses and jumpsuits, weve got you covered in our edit. Weve also got girls blouses, plus an array of joggers and jeans for girls in all the staple colors and styles.',
                 lowImage:'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGtpZHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60'
 },
+}
+    
 // -----------------------
 
 let mainImage = document.querySelector('.mainImg')
@@ -112,13 +113,18 @@ let productBox = document.querySelector('.productContainer')
 let pic = document.querySelector('.polaroid')
 let textBox= document.querySelector('.textContainer')
 
+
+
+
+
+
 const changeAll = () => {
     changeTopPic()
     changeOptions()
     product()
+}
 
-
-    const changeMainImage = (type) =>{
+const changeMainImage = (type) =>{
     if(type === 'mens'){
         mainImage.src = majorContainer.mens.headImage
     }else if(type==='womens'){
@@ -126,9 +132,8 @@ const changeAll = () => {
     }else if(type==='kids'){
         mainImage.src = majorContainer.kids.headImage
     }
-
-
-const changeTopPic = () =>{
+}
+    const changeTopPic = () =>{
         // createImage 
         let newimage = document.createElement('img')
             newimage.setAttribute('src', majorContainer.mens.headImage)
@@ -138,24 +143,44 @@ const changeTopPic = () =>{
 
     }
 
-const changeOptions = () =>{
-        const changeOptions = (type) =>{
-            if(type === 'mens'){
-               type = majorContainer.mens.optionTags
-            }else if(type==='womens'){
-               type = majorContainer.womens.optionTags
-            }else if(type==='kids'){
-                type = majorContainer.kids.optionTags
-            }
+    const changeOptions = () =>{
+        majorContainer.mens.optionTags.forEach((tagname)=>{
+            // CREATE ELE
+            let txt = document.createElement('div')
+            txt.innerHTML = tagname
+            // REPLACE ELEMENT WITH NEW ELEMENT
+            option.append(txt)
         
-    }
+        
+        majorContainer.womens.optionTags.forEach((tagname)=>{
+            // CREATE ELE
+            let txt = document.createElement('div')
+            txt.innerHTML = tagname
+            // REPLACE ELEMENT WITH NEW ELEMENT
+            option.append(txt)})
+        
+     majorContainer.kids.optionTags.forEach((tagname)=>{
+                // CREATE ELE
+                let txt = document.createElement('div')
+                txt.innerHTML = tagname
+                // REPLACE ELEMENT WITH NEW ELEMENT
+                option.append(txt)})
+        })
+            option.replaceChildren();
+            majorContainer.mens.optionTags.forEach((tagname)=>{
+                // CREATE ELEMENT
+                let txt = document.createElement('div')
+                txt.innerHTML = tagname
+                // REPLACE ELEMENT WITH NEW ELEMENT
+                option.append(txt)
+            })
+        }
+    
 
-const product= () => {
+    const product= () => {
         majorContainer.mens.productImages.forEach((obj)=>{
             let shopBox  = document.createElement('img')
             shopBox.setAttribute('src',obj.pic)
             shopBox.setAttribute('class','product')
-            productBox.append(shopBox)
-        })
-    }
-
+            productBox.append(shopBox)})
+        }
